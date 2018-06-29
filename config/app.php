@@ -144,11 +144,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\SatisServiceProvider::class,
 
-        /*
-         * Project providers
-         */
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        #Barryvdh\Debugbar\ServiceProvider::class
     ],
 
     /*
