@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  satis-control-panel-app:
+    container_name: satis-control-panel-app
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+    environment:
+      APP_KEY: ${APP_KEY:-null}
+    volumes:
+      - app-public:/var/www/public
+
+  satis-control-panel-web:
+    container_name: satis-control-panel-web
+    build:
+      context: .docker/web
+    volumes:
+      - app-public:/var/www/public:ro
+    depends_on:
+      - satis-control-panel-app
+
+  satis-control-panel-cron:
+    container_name: satis-control-panel-cron
+    build:
+      context: .docker/cron
+    environment:
+      WEB_HOST: satis-control-panel-web
+    depends_on:
+      - satis-control-panel-web
+
+volumes:
+  app-public:

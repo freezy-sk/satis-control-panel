@@ -1,0 +1,3 @@
+#!/bin/sh
+
+curl -sS -H "X-Requested-With: XMLHttpRequest" -X POST http://$WEB_HOST/control-panel/build-public > /dev/stdout 2>/dev/stderr
